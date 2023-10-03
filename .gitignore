@@ -1,0 +1,5 @@
+﻿.idea
+*.pyc
+build
+dist
+main.spec
