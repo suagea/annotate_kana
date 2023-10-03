@@ -1,0 +1,11 @@
+{
+  "choose_annotation": "Please choose the annotation mode:",
+  "hiragana": "Hiragana",
+  "katakana": "Katakana",
+  "input_choice": "Input choice (1/2): ",
+  "invalid_choice": "Invalid choice. Defaulting to Hiragana.",
+  "start_clipboard": "Press Enter to start fetching data from the clipboard...",
+  "empty_clipboard": "Clipboard is empty or does not contain text data.",
+  "annotated_text": "Annotated text:",
+  "copied_clipboard": "Copied to clipboard."
+}

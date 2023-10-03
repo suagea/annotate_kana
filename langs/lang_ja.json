@@ -1,0 +1,11 @@
+{
+  "choose_annotation": "注音モードを選択してください：",
+  "hiragana": "ひらがな",
+  "katakana": "カタカナ",
+  "input_choice": "オプションを入力してください (1/2): ",
+  "invalid_choice": "無効な選択。ひらがなをデフォルトとして使用します。",
+  "start_clipboard": "Enterキーを押して、クリップボードからデータを取得してください...",
+  "empty_clipboard": "クリップボードが空です、またはテキストデータを含んでいません。",
+  "annotated_text": "注音されたテキスト：",
+  "copied_clipboard": "クリップボードにコピーしました。"
+}

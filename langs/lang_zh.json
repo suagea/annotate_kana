@@ -1,0 +1,11 @@
+{
+  "choose_annotation": "请选择注音模式：",
+  "hiragana": "平假名",
+  "katakana": "片假名",
+  "input_choice": "输入选项 (1/2): ",
+  "invalid_choice": "无效的选择。默认使用平假名。",
+  "start_clipboard": "按下回车开始读取剪切板中的数据...",
+  "empty_clipboard": "剪切板为空或不包含文本数据。",
+  "annotated_text": "注音后的文本：",
+  "copied_clipboard": "已复制到剪切板。"
+}
