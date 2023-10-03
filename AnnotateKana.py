@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time : 2023/10/3 10:07
 # @Author : LiangBoQing
-# @File : main
+# @File : AnnotateKana
 import sys
 import MeCab  # noqa
 from enum import Enum
