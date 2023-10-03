@@ -3,7 +3,7 @@
 # @Author : LiangBoQing
 # @File : main
 import sys
-import MeCab
+import MeCab  # noqa
 from enum import Enum
 
 import pyperclip
@@ -42,25 +42,20 @@ def is_kanji(ch):
   return '\u4e00' <= ch <= '\u9fff' or '\u3400' <= ch <= '\u4DBF'
 
 
-def hiragana_to_katakana(hira):
-  """将平假名转换为片假名"""
-  return ''.join([chr(ord(ch) + 96) if 'ぁ' <= ch <= 'ん' else ch for ch in hira])
-
-
 def katakana_to_hiragana(kata):
   """将片假名转换为平假名"""
   return ''.join([chr(ord(ch) - 96) if 'ァ' <= ch <= 'ン' else ch for ch in kata])
 
 
-def annotate_kana(text, kana_type):
+def annotate_kana_one_row(text, kana_type):
   # 创建MeCab对象
   mecab = MeCab.Tagger()
 
   # 解析文本
   nodes = mecab.parse(text).split("\n")
-  # print(nodes)
 
   annotated_text = ""
+  word = ""
   for node in nodes[:-2]:  # 忽略最后两行，它们通常是EOF和空行
     fields = node.split("\t")
     if len(fields) > 1:
@@ -68,9 +63,7 @@ def annotate_kana(text, kana_type):
       kana = fields[1].split(",")[0]  # 使用默认格式，假名在第一个字段
 
       # 根据kana_type转换假名
-      if kana_type == KanaType.KATAKANA:
-        kana = hiragana_to_katakana(kana)
-      elif kana_type == KanaType.HIRAGANA:
+      if kana_type == KanaType.HIRAGANA:
         kana = katakana_to_hiragana(kana)
 
       if word != kana and any(is_kanji(ch) for ch in word):  # 检查是否包含汉字
@@ -83,11 +76,11 @@ def annotate_kana(text, kana_type):
   return annotated_text
 
 
-def a2(text: str, kana_type=KanaType.HIRAGANA):
+def annotate_kana(text: str, kana_type=KanaType.HIRAGANA):
   t = text.strip().split('\n')
   res = []
   for i in t:
-    res.append(annotate_kana(i, kana_type))
+    res.append(annotate_kana_one_row(i, kana_type))
   return '\n'.join(res)
 
 
@@ -115,7 +108,7 @@ def main():
       print(language_data["empty_clipboard"])
       continue
 
-    annotated_text = a2(text, kana_type)
+    annotated_text = annotate_kana(text, kana_type)
     print(f"\n{language_data['annotated_text']}")
     print(annotated_text)
 
@@ -126,10 +119,11 @@ def main():
 
 if __name__ == "__main__":
   main()
-# print(
-#   annotate_kana(
-#     '「追加休日カウント」は、祝祭日によって年間の休日が何日増えたかを数えています。'
-#     '土日の場合は元々休日ということでカウントしていません。,
-#     KanaType.HIRAGANA
-#   )
-# )
+  # print(
+  #   annotate_kana_one_row(
+  #     '「追加休日カウント」は、祝祭日によって年間の休日が何日増えたかを数えています。'
+  #     '土日の場合は元々休日ということでカウントしていません。',
+  #     KanaType.KATAKANA
+  #   )
+  # )
+#
